@@ -7,7 +7,8 @@ on:
     branches: [ main ]
 
 permissions:
-  contents: read
+  checks: write
+  pull-requests: write
 
 jobs:
   build:
@@ -28,6 +29,18 @@ jobs:
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-    - name: Test with pytest
+    - name: Test with pytest and generate junit xml report
       run: |
-        python -m unittest -v tests/test_python-docker.py
+        pytest tests --junitxml report.xml
+    
+    - name: Create test summary
+      uses: test-summary/action@v1.0
+      with:
+        paths: report.xml
+      if: always()
+      
+    - name: Publish Test Results
+      uses: EnricoMi/publish-unit-test-result-action@v1
+      if: always()
+      with:
+        files: "report.xml"
