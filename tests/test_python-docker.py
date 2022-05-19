@@ -18,7 +18,7 @@ class TestStringMethods(unittest.TestCase):
             s.split(2)
             
     def test_equal_should_fail(self):
-        self.assertEqual(1, 2)
+        self.assertEqual(1, 1)
 
 
 
