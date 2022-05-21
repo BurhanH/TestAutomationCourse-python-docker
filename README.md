@@ -1,6 +1,8 @@
 # Test Automation Course | python-docker
 Sample repository based on Python and Docker
 
+[![Run Python Tests](https://github.com/dsk1975/TestAutomationCourse-python-docker/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/dsk1975/TestAutomationCourse-python-docker/actions/workflows/run-tests.yml)
+
 ## How to run tests
 - python -m unittest -v tests/test_python-docker.py
 - python tests/test_python-docker.py -v
